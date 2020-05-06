@@ -1,0 +1,19 @@
+---
+variables:
+  APP_NS: default
+  APP_LABEL: "run=nginx"
+  ##only deployment is supported
+  APP_KIND: deployment 
+  TOTAL_CHAOS_DURATION: "60"
+  TARGET_CONTAINER: "nginx"
+  NETWORK_INTERFACE: "eth0"
+  NETWORK_LATENCY: "60000"
+  EXPERIMENT_IMAGE: litmuschaos/ansible-runner:latest
+  OPERATOR_IMAGE: litmuschaos/chaos-operator:latest
+  RUNNER_IMAGE: litmuschaos/chaos-runner:latest
+
+.pod_network_latency_template:
+  image: uditgaurav/gitlab-template:latest
+  script:
+    # Running pod-network-latency experiment for the given application
+    - go test tests/pod-network-latency_test.go -v -count=1

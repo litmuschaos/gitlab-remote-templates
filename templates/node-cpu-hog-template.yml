@@ -1,0 +1,17 @@
+---
+variables:
+  APP_NS: default
+  APP_LABEL: "run=nginx"
+  ##only deployment is supported
+  APP_KIND: deployment 
+  TOTAL_CHAOS_DURATION: "60"
+  NODE_CPU_CORE: "2"
+  EXPERIMENT_IMAGE: litmuschaos/ansible-runner:latest
+  OPERATOR_IMAGE: litmuschaos/chaos-operator:latest
+  RUNNER_IMAGE: litmuschaos/chaos-runner:latest
+
+.node_cpu_hog_template:
+  image: uditgaurav/gitlab-template:latest
+  script:
+    # Running node-cpu-hog experiment for the given application
+    - go test tests/node-cpu-hog_test.go -v -count=1

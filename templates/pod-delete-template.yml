@@ -1,0 +1,18 @@
+---
+variables:
+  APP_NS: default
+  APP_LABEL: "run=nginx"
+  ##only deployment is supported
+  APP_KIND: deployment
+  TOTAL_CHAOS_DURATION: "30"
+  CHAOS_INTERVAL: "10"
+  FORCE: "false"
+  EXPERIMENT_IMAGE: litmuschaos/ansible-runner:latest
+  OPERATOR_IMAGE: litmuschaos/chaos-operator:latest
+  RUNNER_IMAGE: litmuschaos/chaos-runner:latest
+
+.pod_delete_template:
+  image: uditgaurav/gitlab-template:latest
+  script:
+    # Running pod delete experiment for the given application
+    - go test tests/pod-delete_test.go -v -count=1

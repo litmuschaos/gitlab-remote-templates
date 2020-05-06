@@ -1,0 +1,18 @@
+---
+variables:
+  APP_NS: default
+  APP_LABEL: "run=nginx"
+  ##only deployment is supported
+  APP_KIND: deployment 
+  TOTAL_CHAOS_DURATION: "60"
+  TARGET_CONTAINER: "nginx"
+  CPU_CORES: "1"
+  EXPERIMENT_IMAGE: litmuschaos/ansible-runner:latest
+  OPERATOR_IMAGE: litmuschaos/chaos-operator:latest
+  RUNNER_IMAGE: litmuschaos/chaos-runner:latest
+
+.pod_cpu_hog_template:
+  image: uditgaurav/gitlab-template:latest
+  script:
+    # Running pod-cpu-hog experiment for the given application
+    - go test tests/pod-cpu-hog_test.go -v -count=1

@@ -1,0 +1,17 @@
+---
+variables:
+  APP_NS: default
+  APP_LABEL: "run=nginx"
+  ##only deployment is supported
+  APP_KIND: deployment 
+  TOTAL_CHAOS_DURATION: "60"
+  MEMORY_PERCENTAGE: "90"
+  EXPERIMENT_IMAGE: litmuschaos/ansible-runner:latest
+  OPERATOR_IMAGE: litmuschaos/chaos-operator:latest
+  RUNNER_IMAGE: litmuschaos/chaos-runner:latest
+
+.node_memory_hog_template:
+  image: uditgaurav/gitlab-template:latest
+  script:
+    # Running node-memory-hog experiment for the given application
+    - go test tests/node-memory-hog_test.go -v -count=1
