@@ -4,13 +4,11 @@ variables:
   APP_KIND: deployment 
   APP_LABEL: %APPLICATION_LABEL%
   TARGET_CONTAINER: %TARGET_CONTAINER_NAME%
-  TOTAL_CHAOS_DURATION: "30"
-  CHAOS_INTERVAL: "10"
-  FORCE: "false"
+  FILL_PERCENTAGE: 80
   EXPERIMENT_IMAGE: litmuschaos/ansible-runner:latest
 
-.pod_delete_template:
+.disk_fill_template:
   image: mayadata-io/chaos-ci-lib:latest
   script:
-    # Running pod delete experiment for the given application
-    - go test tests/pod-delete_test.go -v -count=1
+    # Running disk-fill experiment for the given application
+    - go test tests/disk-fill_test.go -v -count=1
