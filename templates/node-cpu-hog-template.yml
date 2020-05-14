@@ -1,0 +1,15 @@
+---
+variables:
+  APP_NS: default
+  APP_KIND: deployment 
+  APP_LABEL: %APPLICATION_LABEL%
+  TARGET_CONTAINER: %TARGET_CONTAINER_NAME%
+  TOTAL_CHAOS_DURATION: "60"
+  NODE_CPU_CORE: "2"
+  EXPERIMENT_IMAGE: litmuschaos/ansible-runner:latest
+
+.node_cpu_hog_template:
+  image: mayadata-io/chaos-ci-lib:latest
+  script:
+    # Running node-cpu-hog experiment for the given application
+    - go test tests/node-cpu-hog_test.go -v -count=1

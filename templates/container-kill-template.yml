@@ -1,0 +1,13 @@
+---
+variables:
+  APP_NS: default
+  APP_KIND: deployment 
+  APP_LABEL: %APPLICATION_LABEL%
+  TARGET_CONTAINER: %TARGET_CONTAINER_NAME%
+  EXPERIMENT_IMAGE: litmuschaos/ansible-runner:latest
+
+.container_kill_template:
+  image: mayadata-io/chaos-ci-lib:latest
+  script:
+    # Running container-kill experiment for the given application
+    - go test tests/container-kill_test.go -v -count=1
