@@ -1,10 +1,11 @@
 ---
 variables:
   APP_NS: default
-  EXPERIMENT_IMAGE: litmuschaos/ansible-runner:latest
+  EXPERIMENT_IMAGE: litmuschaos/ansible-runner
+  EXPERIMENT_IMAGE_TAG: 1.4.1  
 
 .container_kill_template:
   image: mayadata-io/chaos-ci-lib:latest
   script:
     # Running container-kill experiment for the given application
-    - go test tests/install-litmus_test.go -v -count=1
+    - go test litmus/install-litmus_test.go -v -count=1

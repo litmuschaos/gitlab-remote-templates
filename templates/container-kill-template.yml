@@ -4,7 +4,8 @@ variables:
   APP_KIND: deployment 
   APP_LABEL: %APPLICATION_LABEL%
   TARGET_CONTAINER: %TARGET_CONTAINER_NAME%
-  EXPERIMENT_IMAGE: litmuschaos/ansible-runner:latest
+  EXPERIMENT_IMAGE: litmuschaos/ansible-runner
+  EXPERIMENT_IMAGE_TAG: 1.4.1  
 
 .container_kill_template:
   image: mayadata-io/chaos-ci-lib:latest

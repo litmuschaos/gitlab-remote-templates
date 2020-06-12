@@ -6,7 +6,8 @@ variables:
   TARGET_CONTAINER: %TARGET_CONTAINER_NAME%
   TOTAL_CHAOS_DURATION: "60"
   NODE_CPU_CORE: "2"
-  EXPERIMENT_IMAGE: litmuschaos/ansible-runner:latest
+  EXPERIMENT_IMAGE: litmuschaos/ansible-runner
+  EXPERIMENT_IMAGE_TAG: 1.4.1  
 
 .node_cpu_hog_template:
   image: mayadata-io/chaos-ci-lib:latest

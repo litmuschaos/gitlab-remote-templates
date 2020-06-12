@@ -7,7 +7,8 @@ variables:
   TOTAL_CHAOS_DURATION: "60"
   NETWORK_INTERFACE: "eth0"
   NETWORK_LATENCY: "60000"
-  EXPERIMENT_IMAGE: litmuschaos/ansible-runner:latest
+  EXPERIMENT_IMAGE: litmuschaos/ansible-runner
+  EXPERIMENT_IMAGE_TAG: 1.4.1
 
 .pod_network_latency_template:
   image: mayadata-io/chaos-ci-lib:latest

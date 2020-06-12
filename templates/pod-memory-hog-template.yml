@@ -6,7 +6,8 @@ variables:
   TARGET_CONTAINER: %TARGET_CONTAINER_NAME%
   TOTAL_CHAOS_DURATION: "60"
   MEMORY_CONSUMPTION: "500" #In megabytes
-  EXPERIMENT_IMAGE: litmuschaos/ansible-runner:latest
+  EXPERIMENT_IMAGE: litmuschaos/ansible-runner
+  EXPERIMENT_IMAGE_TAG: 1.4.1
 
 .pod_memory_hog_template:
   image: mayadata-io/chaos-ci-lib:latest
