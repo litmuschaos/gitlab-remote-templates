@@ -2,14 +2,14 @@
 variables:
   APP_NS: default
   APP_KIND: deployment 
-  APP_LABEL: %APPLICATION_LABEL%
-  TARGET_CONTAINER: %TARGET_CONTAINER_NAME%
+  APP_LABEL: APPLICATION_LABEL
+  TARGET_CONTAINER: TARGET_CONTAINER_NAME
   FILL_PERCENTAGE: 80
-  EXPERIMENT_IMAGE: litmuschaos/ansible-runner
-  EXPERIMENT_IMAGE_TAG: 1.4.1  
+  EXPERIMENT_IMAGE: litmuschaos/go-runner:1.6.1
 
 .disk_fill_template:
-  image: mayadata-io/chaos-ci-lib:latest
-  script:
-    # Running disk-fill experiment for the given application
-    - go test tests/disk-fill_test.go -v -count=1
+  image: 
+    name: mayadata-io/chaos-ci-lib:ci
+    entrypoint: ["./disk-fill"]
+  script: 
+    - echo "Running Disk Fill Experiment"

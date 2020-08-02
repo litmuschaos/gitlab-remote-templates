@@ -2,15 +2,15 @@
 variables:
   APP_NS: default
   APP_KIND: deployment 
-  APP_LABEL: %APPLICATION_LABEL%
-  TARGET_CONTAINER: %TARGET_CONTAINER_NAME%
+  APP_LABEL: APPLICATION_LABEL
+  TARGET_CONTAINER: TARGET_CONTAINER_NAME
   TOTAL_CHAOS_DURATION: "60"
   CPU_CORES: "1"
-  EXPERIMENT_IMAGE: litmuschaos/ansible-runner
-  EXPERIMENT_IMAGE_TAG: 1.4.1  
+  EXPERIMENT_IMAGE: litmuschaos/go-runner:1.6.1
 
 .pod_cpu_hog_template:
-  image: mayadata-io/chaos-ci-lib:latest
-  script:
-    # Running pod-cpu-hog experiment for the given application
-    - go test tests/pod-cpu-hog_test.go -v -count=1
+  image: 
+    name: mayadata-io/chaos-ci-lib:ci
+    entrypoint: ["./pod-cpu-hog"]
+  script: 
+    - echo "Running Pod CPU Hog Experiment"
