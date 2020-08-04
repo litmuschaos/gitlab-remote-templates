@@ -2,15 +2,16 @@
 variables:
   APP_NS: default
   APP_KIND: deployment 
-  APP_LABEL: %APPLICATION_LABEL%
-  TARGET_CONTAINER: %TARGET_CONTAINER_NAME%
+  APP_LABEL: APPLICATION_LABEL
+  TARGET_CONTAINER: TARGET_CONTAINER_NAME
   TOTAL_CHAOS_DURATION: "30"
   CHAOS_INTERVAL: "10"
   FORCE: "false"
-  EXPERIMENT_IMAGE: litmuschaos/ansible-runner:latest
+  EXPERIMENT_IMAGE: litmuschaos/go-runner:1.6.1
 
 .pod_delete_template:
-  image: mayadata-io/chaos-ci-lib:latest
-  script:
-    # Running pod delete experiment for the given application
-    - go test tests/pod-delete_test.go -v -count=1
+  image: 
+    name: mayadata-io/chaos-ci-lib:ci
+    entrypoint: ["./pod-delete"]
+  script: 
+    - echo "Running Pod Delete Experiment"
