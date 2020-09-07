@@ -7,7 +7,7 @@ variables:
   TOTAL_CHAOS_DURATION: "60"
   NETWORK_INTERFACE: "eth0"
   NETWORK_PACKET_LOSS_PERCENTAGE: "100"
-  EXPERIMENT_IMAGE: litmuschaos/go-runner:1.6.1
+  EXPERIMENT_IMAGE: litmuschaos/go-runner:1.7.0
 
 .pod_network_loss_template:
   image: 

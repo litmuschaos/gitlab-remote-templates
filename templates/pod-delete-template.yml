@@ -7,7 +7,7 @@ variables:
   TOTAL_CHAOS_DURATION: "30"
   CHAOS_INTERVAL: "10"
   FORCE: "false"
-  EXPERIMENT_IMAGE: litmuschaos/go-runner:1.6.1
+  EXPERIMENT_IMAGE: litmuschaos/go-runner:1.7.0
 
 .pod_delete_template:
   image: 

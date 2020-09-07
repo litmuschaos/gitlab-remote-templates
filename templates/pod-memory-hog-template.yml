@@ -6,7 +6,7 @@ variables:
   TARGET_CONTAINER: TARGET_CONTAINER_NAME
   TOTAL_CHAOS_DURATION: "60"
   MEMORY_CONSUMPTION: "500" #In megabytes
-  EXPERIMENT_IMAGE: litmuschaos/go-runner:1.6.1
+  EXPERIMENT_IMAGE: litmuschaos/go-runner:1.7.0
 
 .pod_memory_hog_template:
   image: 

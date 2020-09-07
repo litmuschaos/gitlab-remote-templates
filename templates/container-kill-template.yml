@@ -4,7 +4,7 @@ variables:
   APP_KIND: deployment 
   APP_LABEL: APPLICATION_LABEL
   TARGET_CONTAINER: TARGET_CONTAINER_NAME
-  EXPERIMENT_IMAGE: litmuschaos/go-runner:1.6.1
+  EXPERIMENT_IMAGE: litmuschaos/go-runner:1.7.0
 
 .container_kill_template:
   image: 
