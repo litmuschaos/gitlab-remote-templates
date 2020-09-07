@@ -5,7 +5,8 @@ variables:
   APP_LABEL: APPLICATION_LABEL
   TOTAL_CHAOS_DURATION: "60"
   MEMORY_PERCENTAGE: "90"
-  EXPERIMENT_IMAGE: litmuschaos/go-runner:1.7.0
+  EXPERIMENT_IMAGE: litmuschaos/go-runner
+  EXPERIMENT_IMAGE_TAG: 1.7.0
 
 .node_memory_hog_template:
   image: 

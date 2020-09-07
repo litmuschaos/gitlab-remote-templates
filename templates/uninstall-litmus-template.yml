@@ -1,7 +1,8 @@
 ---
 variables:
   APP_NS: default
-  EXPERIMENT_IMAGE: litmuschaos/go-runner:1.7.0
+  EXPERIMENT_IMAGE: litmuschaos/go-runner
+  EXPERIMENT_IMAGE_TAG: 1.7.0
 
 .uninstall_litmus_template:
   image: 

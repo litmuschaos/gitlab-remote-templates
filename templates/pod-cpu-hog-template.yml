@@ -6,7 +6,8 @@ variables:
   TARGET_CONTAINER: TARGET_CONTAINER_NAME
   TOTAL_CHAOS_DURATION: "60"
   CPU_CORES: "1"
-  EXPERIMENT_IMAGE: litmuschaos/go-runner:1.7.0
+  EXPERIMENT_IMAGE: litmuschaos/go-runner
+  EXPERIMENT_IMAGE_TAG: 1.7.0
 
 .pod_cpu_hog_template:
   image: 
