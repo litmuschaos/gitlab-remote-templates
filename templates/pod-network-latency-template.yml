@@ -7,7 +7,8 @@ variables:
   TOTAL_CHAOS_DURATION: "60"
   NETWORK_INTERFACE: "eth0"
   NETWORK_LATENCY: "60000"
-  EXPERIMENT_IMAGE: litmuschaos/go-runner:1.6.1
+  EXPERIMENT_IMAGE: litmuschaos/go-runner
+  EXPERIMENT_IMAGE_TAG: 1.7.0
 
 .pod_network_latency_template:
   image: 
