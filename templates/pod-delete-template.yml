@@ -8,11 +8,11 @@ variables:
   CHAOS_INTERVAL: "10"
   FORCE: "false"
   EXPERIMENT_IMAGE: litmuschaos/go-runner
-  EXPERIMENT_IMAGE_TAG: 1.7.0
+  EXPERIMENT_IMAGE_TAG: 1.9.1
 
 .pod_delete_template:
   image: 
-    name: mayadata-io/chaos-ci-lib:ci
+    name: mayadataio/chaos-ci-lib:ci
     entrypoint: ["./pod-delete"]
   script: 
     - echo "Running Pod Delete Experiment"
