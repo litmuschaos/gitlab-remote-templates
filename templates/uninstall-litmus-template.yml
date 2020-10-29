@@ -2,11 +2,11 @@
 variables:
   APP_NS: default
   EXPERIMENT_IMAGE: litmuschaos/go-runner
-  EXPERIMENT_IMAGE_TAG: 1.7.0
+  EXPERIMENT_IMAGE_TAG: 1.9.1
 
 .uninstall_litmus_template:
   image: 
-    name: mayadata-io/chaos-ci-lib:ci
+    name: mayadataio/chaos-ci-lib:ci
     entrypoint: ["./uninstall-litmus"]
   script: 
     - echo "Uninstalling Litmus ..."

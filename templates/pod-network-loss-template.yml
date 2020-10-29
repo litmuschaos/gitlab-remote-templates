@@ -8,11 +8,11 @@ variables:
   NETWORK_INTERFACE: "eth0"
   NETWORK_PACKET_LOSS_PERCENTAGE: "100"
   EXPERIMENT_IMAGE: litmuschaos/go-runner
-  EXPERIMENT_IMAGE_TAG: 1.7.0
+  EXPERIMENT_IMAGE_TAG: 1.9.1
 
 .pod_network_loss_template:
   image: 
-    name: mayadata-io/chaos-ci-lib:ci
+    name: mayadataio/chaos-ci-lib:ci
     entrypoint: ["./pod-memory-loss"]
   script: 
     - echo "Running Pod Network Loss Experiment"

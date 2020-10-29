@@ -5,11 +5,11 @@ variables:
     APP_LABEL: APPLICATION_LABEL
     TARGET_CONTAINER: TARGET_CONTAINER_NAME
     EXPERIMENT_IMAGE: litmuschaos/go-runner
-    EXPERIMENT_IMAGE_TAG: 1.7.0
+    EXPERIMENT_IMAGE_TAG: 1.9.1
 
 .all_experiment_template:
     image: 
-      name: mayadata-io/chaos-ci-lib:ci
+      name: mayadataio/chaos-ci-lib:ci
       entrypoint: ["./all-experiments"]
     script: 
     - echo "Running all litmus GitLab remote template experiments"
