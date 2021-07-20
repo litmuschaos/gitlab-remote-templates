@@ -7,11 +7,11 @@ variables:
   TOTAL_CHAOS_DURATION: "60"
   CPU_CORES: "1"
   EXPERIMENT_IMAGE: litmuschaos/go-runner
-  EXPERIMENT_IMAGE_TAG: 1.9.1
+  EXPERIMENT_IMAGE_TAG: 1.13.8
 
 .pod_cpu_hog_template:
   image: 
-    name: mayadataio/chaos-ci-lib:ci
+    name: litmuschaos/chaos-ci-lib:v0.4.0
     entrypoint: ["./pod-cpu-hog"]
   script: 
     - echo "Running Pod CPU Hog Experiment"

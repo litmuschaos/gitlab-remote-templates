@@ -40,7 +40,7 @@ It is very simple to use these templates in your CI yaml. It can be done using `
 For example including pod delete experiment using remote template:
 ```yaml
 include:
-  - remote: 'https://raw.githubusercontent.com/mayadata-io/gitlab-remote-templates/master/templates/pod-delete-template.yml'
+  - remote: 'https://raw.githubusercontent.com/litmuschaos/gitlab-remote-templates/master/templates/pod-delete-template.yml'
 ```
 
 We can provide multiple remotes in list formate to add more number of remote templates.
@@ -51,7 +51,7 @@ _gitlab-ci.yml_
 ```yaml
 ---
 include:
-  remote: 'https://raw.githubusercontent.com/mayadata-io/gitlab-remote-templates/master/templates/pod-delete-template.yml'
+  remote: 'https://raw.githubusercontent.com/litmuschaos/gitlab-remote-templates/master/templates/pod-delete-template.yml'
 
 stages:
   - chaos

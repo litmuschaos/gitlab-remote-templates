@@ -6,11 +6,11 @@ variables:
   TARGET_CONTAINER: TARGET_CONTAINER_NAME
   FILL_PERCENTAGE: 80
   EXPERIMENT_IMAGE: litmuschaos/go-runner
-  EXPERIMENT_IMAGE_TAG: 1.9.1
+  EXPERIMENT_IMAGE_TAG: 1.13.8
 
 .disk_fill_template:
   image: 
-    name: mayadataio/chaos-ci-lib:ci
+    name: litmuschaos/chaos-ci-lib:v0.4.0
     entrypoint: ["./disk-fill"]
   script: 
     - echo "Running Disk Fill Experiment"
