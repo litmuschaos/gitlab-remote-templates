@@ -7,11 +7,11 @@ variables:
   TOTAL_CHAOS_DURATION: "60"
   NETWORK_INTERFACE: "eth0"
   EXPERIMENT_IMAGE: litmuschaos/go-runner
-  EXPERIMENT_IMAGE_TAG: 1.9.1
+  EXPERIMENT_IMAGE_TAG: 1.13.8
 
 .pod_network_corruption_template:
   image: 
-    name: mayadataio/chaos-ci-lib:ci
+    name: litmuschaos/chaos-ci-lib:v0.4.0
     entrypoint: ["./pod-network-corruption"]
   script: 
     - echo "Running Pod Network Corruption"

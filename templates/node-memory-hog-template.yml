@@ -6,11 +6,11 @@ variables:
   TOTAL_CHAOS_DURATION: "60"
   MEMORY_PERCENTAGE: "90"
   EXPERIMENT_IMAGE: litmuschaos/go-runner
-  EXPERIMENT_IMAGE_TAG: 1.9.1
+  EXPERIMENT_IMAGE_TAG: 1.13.8
 
 .node_memory_hog_template:
   image: 
-    name: mayadataio/chaos-ci-lib:ci
+    name: litmuschaos/chaos-ci-lib:v0.4.0
     entrypoint: ["./node-memory-hog"]
   script: 
     - echo "Running Node Memory Hog Experiment"

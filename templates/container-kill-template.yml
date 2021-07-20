@@ -5,12 +5,12 @@ variables:
   APP_LABEL: APPLICATION_LABEL
   TARGET_CONTAINER: TARGET_CONTAINER_NAME
   EXPERIMENT_IMAGE: litmuschaos/go-runner
-  EXPERIMENT_IMAGE_TAG: 1.9.1
+  EXPERIMENT_IMAGE_TAG: 1.13.8
 
 
 .container_kill_template:
   image: 
-    name: mayadataio/chaos-ci-lib:ci
+    name: litmuschaos/chaos-ci-lib:v0.4.0
     entrypoint: ["./container-kill"]
   script: 
     - echo "Running Container Kill Experiment"
