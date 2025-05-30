@@ -1,12 +1,25 @@
 ---
 variables:
+  # SDK Authentication Variables
+  LITMUS_ENDPOINT: LITMUS_CHAOS_CENTER_URL
+  LITMUS_USERNAME: LITMUS_USERNAME
+  LITMUS_PASSWORD: LITMUS_PASSWORD
+  LITMUS_PROJECT_ID: LITMUS_PROJECT_ID
+
+  # Infrastructure Configuration
+  INFRA_NAME: "litmus-infrastructure"
+  INFRA_NAMESPACE: "litmus"
   APP_NS: default
+  
+  # Litmus Uninstall Configuration
   EXPERIMENT_IMAGE: litmuschaos/go-runner
-  EXPERIMENT_IMAGE_TAG: 1.13.8
+  EXPERIMENT_IMAGE_TAG: 3.18.0
+  LITMUS_VERSION: "3.0.0"
+  REMOVE_ALL: "true"
 
 .uninstall_litmus_template:
   image: 
-    name: litmuschaos/chaos-ci-lib:v0.4.0
+    name: litmuschaos/chaos-ci-lib:v0.5.0
     entrypoint: ["./uninstall-litmus"]
   script: 
     - echo "Uninstalling Litmus ..."

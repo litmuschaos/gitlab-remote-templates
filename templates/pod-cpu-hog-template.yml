@@ -1,17 +1,60 @@
 ---
 variables:
+  # SDK Authentication Variables
+  LITMUS_ENDPOINT: LITMUS_CHAOS_CENTER_URL
+  LITMUS_USERNAME: LITMUS_USERNAME
+  LITMUS_PASSWORD: LITMUS_PASSWORD
+  LITMUS_PROJECT_ID: LITMUS_PROJECT_ID
+
+  # Infrastructure Setup Variables
+  INSTALL_INFRA: "true"
+  USE_EXISTING_INFRA: "false"
+  EXISTING_INFRA_ID: ""
+  INFRA_NAME: "ci-infra-pod-cpu-hog"
+  INFRA_NAMESPACE: "litmus"
+  INFRA_SCOPE: "namespace"
+  INFRA_SERVICE_ACCOUNT: "litmus"
+
+  # Application Info
   APP_NS: default
   APP_KIND: deployment 
   APP_LABEL: APPLICATION_LABEL
+
+  # Experiment Configuration
+  EXPERIMENT_NAME: pod-cpu-hog
+  EXPERIMENT_IMAGE: litmuschaos/go-runner
+  EXPERIMENT_IMAGE_TAG: 3.18.0
+  IMAGE_PULL_POLICY: Always
+
+  # CPU Hog Specific Configuration
   TARGET_CONTAINER: TARGET_CONTAINER_NAME
   TOTAL_CHAOS_DURATION: "60"
   CPU_CORES: "1"
-  EXPERIMENT_IMAGE: litmuschaos/go-runner
-  EXPERIMENT_IMAGE_TAG: 1.13.8
+  CONTAINER_RUNTIME: "containerd"
+  SOCKET_PATH: "/run/containerd/containerd.sock"
+  PODS_AFFECTED_PERC: "0"
+  TARGET_PODS: ""
+  DEFAULT_HEALTH_CHECK: "false"
+  RAMP_TIME: ""
+  STRESS_TYPE: "CPU"
+  
+  # Probe Configuration Variables
+  LITMUS_CREATE_PROBE: "false"
+  LITMUS_PROBE_NAME: "http-probe"
+  LITMUS_PROBE_TYPE: "httpProbe"
+  LITMUS_PROBE_MODE: "SOT"
+  LITMUS_PROBE_URL: ""
+  LITMUS_PROBE_TIMEOUT: "30s"
+  LITMUS_PROBE_INTERVAL: "10s"
+  LITMUS_PROBE_ATTEMPTS: "1"
+  LITMUS_PROBE_RESPONSE_CODE: "200"
+
+  # Cleanup
+  LITMUS_CLEANUP: "true"
 
 .pod_cpu_hog_template:
   image: 
-    name: litmuschaos/chaos-ci-lib:v0.4.0
+    name: litmuschaos/chaos-ci-lib:v0.5.0
     entrypoint: ["./pod-cpu-hog"]
   script: 
     - echo "Running Pod CPU Hog Experiment"

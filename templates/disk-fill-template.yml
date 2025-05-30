@@ -1,16 +1,62 @@
 ---
 variables:
+  # SDK Authentication Variables
+  LITMUS_ENDPOINT: LITMUS_CHAOS_CENTER_URL
+  LITMUS_USERNAME: LITMUS_USERNAME
+  LITMUS_PASSWORD: LITMUS_PASSWORD
+  LITMUS_PROJECT_ID: LITMUS_PROJECT_ID
+
+  # Infrastructure Setup Variables
+  INSTALL_INFRA: "true"
+  USE_EXISTING_INFRA: "false"
+  EXISTING_INFRA_ID: ""
+  INFRA_NAME: "ci-infra-disk-fill"
+  INFRA_NAMESPACE: "litmus"
+  INFRA_SCOPE: "namespace"
+  INFRA_SERVICE_ACCOUNT: "litmus"
+
+  # Application Info
   APP_NS: default
   APP_KIND: deployment 
   APP_LABEL: APPLICATION_LABEL
-  TARGET_CONTAINER: TARGET_CONTAINER_NAME
-  FILL_PERCENTAGE: 80
+
+  # Experiment Configuration
+  EXPERIMENT_NAME: disk-fill
   EXPERIMENT_IMAGE: litmuschaos/go-runner
-  EXPERIMENT_IMAGE_TAG: 1.13.8
+  EXPERIMENT_IMAGE_TAG: 3.18.0
+  IMAGE_PULL_POLICY: Always
+
+  # Disk Fill Specific Configuration
+  TARGET_CONTAINER: TARGET_CONTAINER_NAME
+  FILL_PERCENTAGE: "80"
+  TOTAL_CHAOS_DURATION: "60"
+  CONTAINER_RUNTIME: "containerd"
+  SOCKET_PATH: "/run/containerd/containerd.sock"
+  PODS_AFFECTED_PERC: "0"
+  TARGET_PODS: ""
+  DEFAULT_HEALTH_CHECK: "false"
+  EPHEMERAL_STORAGE_MEBIBYTES: ""
+  FILESYSTEM_UTILIZATION_PERCENTAGE: ""
+  FILESYSTEM_UTILIZATION_BYTES: ""
+  CONTAINER_PATH: "/var/lib/docker/containers"
+  
+  # Probe Configuration Variables
+  LITMUS_CREATE_PROBE: "false"
+  LITMUS_PROBE_NAME: "http-probe"
+  LITMUS_PROBE_TYPE: "httpProbe"
+  LITMUS_PROBE_MODE: "SOT"
+  LITMUS_PROBE_URL: ""
+  LITMUS_PROBE_TIMEOUT: "30s"
+  LITMUS_PROBE_INTERVAL: "10s"
+  LITMUS_PROBE_ATTEMPTS: "1"
+  LITMUS_PROBE_RESPONSE_CODE: "200"
+
+  # Cleanup
+  LITMUS_CLEANUP: "true"
 
 .disk_fill_template:
   image: 
-    name: litmuschaos/chaos-ci-lib:v0.4.0
+    name: litmuschaos/chaos-ci-lib:v0.5.0
     entrypoint: ["./disk-fill"]
   script: 
     - echo "Running Disk Fill Experiment"

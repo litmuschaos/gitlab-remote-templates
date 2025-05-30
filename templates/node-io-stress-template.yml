@@ -1,0 +1,61 @@
+---
+variables:
+  # SDK Authentication Variables
+  LITMUS_ENDPOINT: LITMUS_CHAOS_CENTER_URL
+  LITMUS_USERNAME: LITMUS_USERNAME
+  LITMUS_PASSWORD: LITMUS_PASSWORD
+  LITMUS_PROJECT_ID: LITMUS_PROJECT_ID
+
+  # Infrastructure Setup Variables
+  INSTALL_INFRA: "true"
+  USE_EXISTING_INFRA: "false"
+  EXISTING_INFRA_ID: ""
+  INFRA_NAME: "ci-infra-node-io-stress"
+  INFRA_NAMESPACE: "litmus"
+  INFRA_SCOPE: "cluster"
+  INFRA_SERVICE_ACCOUNT: "litmus"
+
+  # Application Info
+  APP_NS: default
+  APP_KIND: deployment 
+  APP_LABEL: APPLICATION_LABEL
+
+  # Experiment Configuration
+  EXPERIMENT_NAME: node-io-stress
+  EXPERIMENT_IMAGE: litmuschaos/go-runner
+  EXPERIMENT_IMAGE_TAG: 3.18.0
+  IMAGE_PULL_POLICY: Always
+
+  # Node IO Stress Specific Configuration
+  TARGET_CONTAINER: TARGET_CONTAINER_NAME
+  TOTAL_CHAOS_DURATION: "120"
+  FILESYSTEM_UTILIZATION_PERCENTAGE: "10"
+  FILESYSTEM_UTILIZATION_BYTES: ""
+  NUMBER_OF_WORKERS: "4"
+  VOLUME_MOUNT_PATH: ""
+  NODE_LABEL: ""
+  TARGET_NODES: ""
+  NODES_AFFECTED_PERC: "0"
+  RAMP_TIME: ""
+  DEFAULT_HEALTH_CHECK: "false"
+  
+  # Probe Configuration Variables
+  LITMUS_CREATE_PROBE: "false"
+  LITMUS_PROBE_NAME: "http-probe"
+  LITMUS_PROBE_TYPE: "httpProbe"
+  LITMUS_PROBE_MODE: "SOT"
+  LITMUS_PROBE_URL: ""
+  LITMUS_PROBE_TIMEOUT: "30s"
+  LITMUS_PROBE_INTERVAL: "10s"
+  LITMUS_PROBE_ATTEMPTS: "1"
+  LITMUS_PROBE_RESPONSE_CODE: "200"
+
+  # Cleanup
+  LITMUS_CLEANUP: "true"
+
+.node_io_stress_template:
+  image: 
+    name: litmuschaos/chaos-ci-lib:v0.5.0
+    entrypoint: ["./node-io-stress"]
+  script: 
+    - echo "Running Node IO Stress Experiment" 

@@ -1,12 +1,31 @@
 ---
 variables:
+  # SDK Authentication Variables
+  LITMUS_ENDPOINT: LITMUS_CHAOS_CENTER_URL
+  LITMUS_USERNAME: LITMUS_USERNAME
+  LITMUS_PASSWORD: LITMUS_PASSWORD
+  LITMUS_PROJECT_ID: LITMUS_PROJECT_ID
+
+  # Infrastructure Setup Variables
+  INFRA_NAME: "litmus-infrastructure"
+  INFRA_NAMESPACE: "litmus"
+  INFRA_SCOPE: "namespace"
+  INFRA_SERVICE_ACCOUNT: "litmus"
+  
+  # Litmus Installation Configuration
   APP_NS: default
   EXPERIMENT_IMAGE: litmuschaos/go-runner
-  EXPERIMENT_IMAGE_TAG: 1.13.8
+  EXPERIMENT_IMAGE_TAG: 3.18.0
+  LITMUS_VERSION: "3.0.0"
+  CHAOS_CENTER_UI: "true"
+  NAMESPACE_MODE: "new"
+  
+  # Cleanup
+  LITMUS_CLEANUP: "false"
 
 .install_litmus_template:
   image: 
-    name: litmuschaos/chaos-ci-lib:v0.4.0
+    name: litmuschaos/chaos-ci-lib:v0.5.0
     entrypoint: ["./install-litmus"]
   script: 
     - echo "Installing Litmus ..."
